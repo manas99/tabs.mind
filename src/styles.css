@@ -1,0 +1,127 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+@theme {
+    --color-brand-50: #f5f3ff;
+    --color-brand-100: #ede9fe;
+    --color-brand-200: #ddd6fe;
+    --color-brand-300: #c4b5fd;
+    --color-brand-400: #a78bfa;
+    --color-brand-500: #7b61ff;
+    --color-brand-600: #6b4dff;
+    --color-brand-700: #5a3eff;
+    --color-brand-800: #4a33cc;
+    --color-brand-900: #392699;
+
+    --font-sans: Inter, system-ui, sans-serif;
+    --font-display: "League Spartan", Inter, sans-serif;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("/src/assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf")
+        format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "League Spartan";
+    src: url("/src/assets/fonts/League_Spartan/LeagueSpartan-VariableFont_wght.ttf")
+        format("truetype");
+    font-display: swap;
+}
+
+@layer base {
+    html,
+    body {
+        @apply bg-gradient-to-br from-[#0d0d12] via-[#11121a] to-[#0d0d12] text-neutral-100 font-sans antialiased;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        @apply font-semibold text-neutral-100;
+    }
+
+    input,
+    textarea,
+    button {
+        @apply focus:outline-none;
+    }
+}
+
+@layer components {
+    .card {
+        @apply relative rounded-2xl border border-neutral-800 bg-neutral-900/60 backdrop-blur-lg shadow-lg;
+        transition: all 0.25s ease;
+    }
+
+    .card:hover {
+        @apply border-neutral-700 shadow-xl;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center rounded-lg font-medium px-4 py-2 text-sm transition-colors;
+    }
+
+    .btn-primary {
+        @apply bg-brand-600 text-white hover:bg-brand-500;
+    }
+
+    .btn-secondary {
+        @apply bg-neutral-800 text-neutral-200 hover:bg-neutral-700;
+    }
+
+    .input {
+        @apply w-full rounded-lg bg-neutral-900/60 border border-neutral-800 px-3 py-2 text-sm placeholder:text-neutral-500 backdrop-blur-sm;
+    }
+
+    .gradient-text {
+        @apply bg-gradient-to-r from-brand-400 via-sky-400 to-purple-400 bg-clip-text text-transparent;
+    }
+}
+
+@layer utilities {
+    .fade-in {
+        animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(4px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInModal {
+        from {
+            opacity: 0;
+            transform: scale(0.98);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .fade-in-modal {
+        animation: fadeInModal 0.25s ease-out forwards;
+    }
+}
